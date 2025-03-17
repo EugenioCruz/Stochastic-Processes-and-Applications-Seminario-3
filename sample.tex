@@ -1,0 +1,303 @@
+%--------------------------------------------------------------
+%    PACKAGES AND THEMES
+%--------------------------------------------------------------
+
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimpleDarkBlue}
+
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+
+\newtheorem{proposition}{Proposition}
+%--------------------------------------------------------------
+%    TITLE PAGE
+%--------------------------------------------------------------
+
+\title{Seminario 3}
+\subtitle{Diffusion Processes}
+
+\author{Eugenio Cruz Ossa}
+
+\institute
+{
+    Ingenier\'ia Civil Matem\'atica y Computacional \\
+    Pontificia Universidad Cat\'olica % Your institution for the title page
+}
+\date{Mi\'ercoles 26 de Marzo, 2025} % Date, can be changed to a custom date
+
+%--------------------------------------------------------------
+%    PRESENTATION SLIDES
+%--------------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}
+    % Print the title page as the first slide
+    \titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------
+\section{Examples of Markov processes}
+%------------------------------------------------
+
+\begin{frame}
+    \centering
+    \Huge{2.1.- Examples of Markov Processes}
+\end{frame}
+
+\begin{frame}{Random Walk in one dimension}
+    \begin{definition}[Markov Process (Informal)]
+        A Markov process is a stochastic process for which, given the present, the past and the future are statistically independent.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Example: Discrete-time Markov Chain}
+    \begin{example}[Random Walk in 1 dimension]
+        Let $\{\xi_i\}_{i \in \mathbb{N}}$ be \textit{iid} with $\mathbb{E}[\xi_i] = 0$ for all $i \in \mathbb{N}$, then the one-dimensional random walk is defined as:
+        $$
+        X_N = \sum_{n=1}^N \xi_n,\ \ X_0 = 0.
+        $$
+    \end{example}
+
+    \begin{definition}[Discrete-time Markov Chain]
+        A stochastic process $\{X_n\}_{n \in \mathbb{N}}$ with state space $S = \mathbb{Z}$ is called a \textit{discrete-time Markov chain} if it satisfies the \textit{Markov property}, that is, for all integers $n, m$ and all sequences $\{i_k\}_{k \in \mathbb{N}} \subseteq \mathbb{Z}$:
+        $$
+        \mathbb{P}( X_{n+m} = i_{n+m} | X_1 = i_1, \ldots, X_n = i_n) = \mathbb{P}(X_{n+m} = i_{n+m} | X_n = i_n).
+        $$
+    \end{definition}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+    \begin{proposition}
+    The one-dimensional random walk $\{X_n\}_{n \in \mathbb{N}}$ satisfies the Markov property and is therefore a discrete-time Markov chain.
+    \end{proposition}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{Example: Continuous-time Markov Chain}
+    \begin{example}[Poisson Process]
+        Let $\{N_t\}_{t \geq 0}$ be a counting process where $N_t$ represents the number of events up to time $t$. A Poisson process with rate $\lambda > 0$ is defined by $N_0 = 0$ and the probability:
+        $$
+        \mathbb{P}(N_{t+h} = j | N_t = i) =
+        \begin{cases}
+            0, & \text{if } j < i, \\
+            \frac{e^{-\lambda h} (\lambda h)^{j-i}}{(j-i)!}, & \text{if } j \geq i.
+        \end{cases}
+        $$
+    \end{example}
+
+    \begin{definition}[Continuous-time Markov Chain]
+        A stochastic process $\{X_t\}_{t \geq 0}$ with state space $S = \mathbb{Z}$ is a \textit{continuous-time Markov chain} if it satisfies the Markov property:
+        $$
+        \mathbb{P}(X_{t+h} = i_{t+h} | \{X_s, s \leq t\}) = \mathbb{P}(X_{t+h} = i_{t+h} | X_t), \quad \forall h \geq 0.
+        $$
+    \end{definition}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+    \begin{proposition}
+    The Poisson process $\{N_t\}_{t \geq 0}$ satisfies the Markov property and is therefore a continuous-time Markov chain.
+    \end{proposition}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Continuous-time Markov Process}
+    \begin{definition}[Continuous-time Markov Process]
+        A stochastic process $\{X_t\}_{t \geq 0}$ with state space $S = \mathbb{R}$ is called a \textit{continuous-time Markov process} if for all Borel sets $\Gamma$ and for all $h \geq 0$, it satisfies the Markov property:
+        $$
+        \mathbb{P}(X_{t+h} \in \Gamma | \{X_s, s \leq t\}) = \mathbb{P}(X_{t+h} \in \Gamma | X_t).
+        $$
+        If there exists a conditional probability density $p(y, t+h | x, t)$ such that
+        $$
+        \mathbb{P}(X_{t+h} \in \Gamma | X_t = x) = \int_{\Gamma} p(y, t+h | x, t) \, dy \quad \left(\ddagger\right),
+        $$
+        then we say that the process admits a transition density function. Additionally, we call $\left(\ddagger\right)$ the Chapman-Kolmogorov equation.
+    \end{definition}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Examples of Continuous-time Markov Processes}
+    \textbf{Example 1: Brownian Motion.} The Brownian motion $\{W_t\}_{t \geq 0}$ is a Markov process with transition probability density given by:
+    $$
+    \mathbb{P}(W_{t+h} \in \Gamma | W_t = x) = \int_{\Gamma} \frac{1}{\sqrt{2\pi h}} \exp \left( -\frac{|x - y|^2}{2h} \right) dy.
+    $$
+
+    \vspace{0.4cm}
+    
+    \textbf{Example 2: Ornstein-Uhlenbeck Process.} The stationary Ornstein-Uhlenbeck process $V_t = e^{-t} W(e^{2t})$ is a Markov process with transition probability density:
+    $$
+    p(y, t | x, s) = \frac{1}{\sqrt{2\pi(1 - e^{-2(t-s)})}} \exp \left( -\frac{|y - x e^{-(t-s)}|^2}{2(1 - e^{-2(t-s)})} \right).
+    $$
+In both cases, the Markov property follows from the fact that each motion has independent increments.
+\end{frame}
+
+\begin{frame}{Examples of continuous-time Markov Processes}
+    \begin{proof}
+        For $t > s$:
+        \begin{align*}
+        \mathbb{P}(V_t \leq y | V_s = x) &= \mathbb{P}(e^{-t} W(e^{2t}) \leq y | e^{-s} W(e^{2s}) = x) \\
+        &= \mathbb{P}(W(e^{2t}) \leq e^t y | W(e^{2s}) = e^s x) \\
+        &= \int_{-\infty}^{e^t y} \frac{1}{\sqrt{2\pi (e^{2t} - e^{2s})}} 
+        \exp\left( -\frac{|z - x e^s|^2}{2(e^{2t} - e^{2s})} \right) dz \\
+        &= \int_{-\infty}^{y} \frac{1}{\sqrt{2\pi e^{2t} (1 - e^{-2(t-s)})}} 
+        \exp\left( -\frac{| \rho e^t - x e^s |^2}{2(e^{2t} (1 - e^{-2(t-s)}))} \right) d\rho \\
+        &= \int_{-\infty}^{y} \frac{1}{\sqrt{2\pi (1 - e^{-2(t-s)})}} 
+        \exp\left( -\frac{| \rho - x e^{-(t-s)} |^2}{2(1 - e^{-2(t-s)})} \right) d\rho.
+        \end{align*}
+    \end{proof}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Examples of continuous-time Markov Processes and Chapman-Kolmogorov Equation}
+    \begin{proof}
+        Then, the \textit{transition conditional probability density} is given by:
+        \begin{align*}
+            p(y,t|x,s) &= \frac{\partial}{\partial y} \mathbb{P}\left( V_t \leq y | V_s = x \right)\\
+            &= \frac{1}{\sqrt{2\pi (1 - e^{-2(t-s)})}} \exp\left( -\frac{|y - x e^{-(t-s)}|^2}{2(1 - e^{-2(t-s)})} \right).
+        \end{align*}
+    \end{proof}
+    The Markov property enables us to obtain an evolution of the Markov chain in terms of the transition probability density for a discrete-time or continuous-time Markov chain. The evolution is given by the \textit{Chapman-Kolmogorov equation}.
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Chapman-Kolmogorov Equation}
+    For a time-homogeneous Markov process, the transition matrix $P$ is:
+    $$
+    p_{ij} = \mathbb{P}(X_{n+1} = j | X_n = i).
+    $$
+    The matrix $P$ is stochastic, meaning:
+    \begin{itemize}
+        \item $p_{ij} \geq 0$ for all $i,j \in S$.
+        \item $\sum_{j \in S} p_{ij} = 1$ for all $i \in S$.
+    \end{itemize}
+    Moreover, we can define the $n$-step transition matrix $P(n)$ as:
+    $$
+    p_{ij}(n) = \mathbb{P}(X_{m+n} = j | X_m = i).
+    $$
+    The Chapman-Kolmogorov equation for time-homogeneous processes is:
+    $$
+    p_{ij}(m + n) = \sum_{k \in S} p_{ik}(m) p_{kj}(n).
+    $$
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Chapman-Kolmogorov Equation}
+    The above is equivalent to:
+    $$
+    P(m + n) = P(m)P(n).
+    $$
+    Then, starting with an initial probability vector $\mu^{(0)}$, we can obtain the probability distribution at time $n$ as:
+    $$
+    \mu^{(n)} = \mu^{(0)} P^n.
+    $$
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{The Generator of a Markov Process}
+    Consider a continous-time Markov Chain with transition probability:
+    $$
+    p_{ij}(s,t) = \mathbb{P}(X_t = j | X_s = i).
+    $$
+    If the chain is homogeneous, then:
+    $$
+    p_{ij}(s,t) = p_{ij}(0,t), \quad \forall s,t \geq 0.
+    $$
+    So we can define $p_{ij}(s,t) := p_{ij}(0,t)$ as the transition probability density. The Chapman-Kolmogorov equation can be written as:
+    $$
+    \frac{\partial}{\partial t} p_{ij}(t) = \sum_{k \in S} p_{ik}(t) g_{kj} \quad \, \left(\ddagger\right)
+    $$
+    Where $G$ is called the generator of the Markov chain and it is defined as:
+    $$
+    G = \lim_{h \to 0} \frac{1}{h} (P_h - I)
+    $$
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{The Generator of a Markov Process}
+    Thus, we have that $\left(\ddagger\right)$ is equivalent to:
+    $$
+    \frac{\partial P_t}{\partial t} = P_t G.
+    $$
+    Let define $\mu_t^i := \mathbb{P}(X_t = i)$ This vector is the distribution of the Markov chain at time $t$. Then, we have that:
+    $$
+    \mu_t = \mu_0 P_t.
+    $$
+\end{frame}
+
+
+%------------------------------------------------
+\section{Markov Processes and the Chapman-Kolmogorov equation}
+%------------------------------------------------
+
+\begin{frame}
+    \centering
+    \Huge{2.2.- Markov Processes and the Chapman-Kolmogorov equation}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Filtration}
+    In order to give the definition of a Markov process with $T=\mathbb{R}^+$ and $S=\mathbb{R}^d$, we need to use the conditional expectation of the stochastic process conditioned on all past values. We can encode all past information about a stochastic process into an appropriate collection of $\sigma$-algebras.
+
+    \begin{definition}[$\sigma$-algebra generated by a stochastic process]
+        Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and let $\{X_t\}_{t \in T}$ be a stochastic process on it with space state $(\mathbb{R}^d, \mathcal{B}(\mathbb{R}^d))$. The $\sigma$-algebra generated by the process is the smallest $\sigma$-algebra $\sigma(X_t, t \in T)$ on $\Omega$ such that $X_t$ is measurable.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Filtration}
+    \begin{definition}[Filtration]
+        Definimos una filtración en $(\Omega,\mathcal{F})$ como una familia no decreciente $\{\mathcal{F}_t, t \in \mathbb{R}_+\}$ de sub-$\sigma$-álgebras de $\mathcal{F}$:
+        $$
+        \mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F} \quad \text{para } s \leq t.
+        $$
+        Definimos $\mathcal{F}_\infty = \sigma(\cup_{t\in T}\mathcal{F}_t)$. La filtración generada por nuestro proceso estocástico $X_t$ es:
+        $$
+        \mathcal{F}_t^X := \sigma(X_s, s \leq t).
+        $$
+    \end{definition}
+\end{frame}
+
+%------------------------------------------------
+\section{The Generator of a Markov Process}
+%------------------------------------------------
+
+\begin{frame}
+    \centering
+    \Huge{2.3.- The Generator of a Markov Process}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Theorem}
+    \begin{theorem}[Mass--energy equivalence]
+        $E = mc^2$ aa
+    \end{theorem}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{References}
+    \footnotesize
+    \bibliography{reference.bib}
+    \bibliographystyle{apalike}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \Huge{\centerline{\textbf{The End}}}
+\end{frame}
+
+%--------------------------------------------------------------
+
+\end{document}

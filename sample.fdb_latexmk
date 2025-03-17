@@ -1,14 +1,13 @@
 # Fdb version 4
-["bibtex sample"] 1742177047 "sample.aux" "sample.bbl" "sample" 1742177090 0
+["bibtex sample"] 1742177183 "sample.aux" "sample.bbl" "sample" 1742177184 0
   "./reference.bib" 1741235804 185 ef4ba3239c70df18392eb33c5c2028ee ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "sample.aux" 1742177090 4896 25f5e35ab8f310d9f0e30ac2f041a792 "pdflatex"
+  "sample.aux" 1742177183 4896 25f5e35ab8f310d9f0e30ac2f041a792 "pdflatex"
   (generated)
   "sample.bbl"
   "sample.blg"
   (rewritten before read)
-["pdflatex"] 1742177089 "/Users/eugeniocruz/Documents/Semestre 11/Seminario Sampling/Seminario 3/sample.tex" "sample.pdf" "sample" 1742177090 0
-  "/Users/eugeniocruz/Documents/Semestre 11/Seminario Sampling/Seminario 3/sample.tex" 1742177089 12372 d55c4f3995510d19fa5a2b0260c75e00 ""
+["pdflatex"] 1742177184 "sample.tex" "sample.pdf" "sample" 1742177184 2
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -221,12 +220,12 @@
   "beamerfontthemeSimpleDarkBlue.sty" 1741235804 1415 7f3c6b511b7db0d7ad2ec03af90863b5 ""
   "beamerinnerthemeSimpleDarkBlue.sty" 1741235804 2393 f22e69a0c8325624047edfa537865049 ""
   "beamerthemeSimpleDarkBlue.sty" 1741235804 643 e52de2bf7b2f3372599a1697f857ed0d ""
-  "sample.aux" 1742177090 4896 25f5e35ab8f310d9f0e30ac2f041a792 "pdflatex"
-  "sample.bbl" 1742177047 49 0eba253fc001332e731e8aba3f23127b "bibtex sample"
-  "sample.nav" 1742177090 2941 5fc95e38d63f2ef53220a037ca19ff2d "pdflatex"
-  "sample.out" 1742177090 733 19c234187807a36e9240e525a54e3335 "pdflatex"
-  "sample.tex" 1742177089 12372 d55c4f3995510d19fa5a2b0260c75e00 ""
-  "sample.toc" 1742177090 223 f1789687c7da438436a183406cdf61e8 "pdflatex"
+  "sample.aux" 1742177183 4896 25f5e35ab8f310d9f0e30ac2f041a792 "pdflatex"
+  "sample.bbl" 1742177184 49 0eba253fc001332e731e8aba3f23127b "bibtex sample"
+  "sample.nav" 1742177183 2941 5fc95e38d63f2ef53220a037ca19ff2d "pdflatex"
+  "sample.out" 1742177183 733 19c234187807a36e9240e525a54e3335 "pdflatex"
+  "sample.tex" 1742177180 12378 fd78c0bdd48f8682285c9a3a679f325a ""
+  "sample.toc" 1742177183 223 f1789687c7da438436a183406cdf61e8 "pdflatex"
   (generated)
   "sample.aux"
   "sample.log"
